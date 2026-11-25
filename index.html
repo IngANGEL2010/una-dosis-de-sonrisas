@@ -1,0 +1,30 @@
+
+<div id="gift" style="background:radial-gradient(ellipse at top,#fff9ee,#f8e0ee 60%,#e5d9fa);border-radius:20px;padding:22px;text-align:center;color:#81486d;font-family:system-ui">
+<div style="font-size:10px;letter-spacing:3px">✦ UN PEQUEÑO REGALO PARA TI ✦</div>
+<h1 style="font-family:Georgia;font-size:29px;margin:12px 0">Una dosis de sonrisas</h1>
+<p style="font-size:13px">Porque cualquier día es bueno para regalarte una sonrisa.</p>
+<svg id="machine" viewBox="0 0 260 285" style="width:220px;max-width:100%;filter:drop-shadow(0 8px 7px #b478a333)">
+<defs><linearGradient id="pink" x2=".3" y2="1"><stop stop-color="#f9c8dd"/><stop offset="1" stop-color="#d88bab"/></linearGradient><linearGradient id="glass"><stop stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#e9dafa" stop-opacity=".5"/></linearGradient></defs>
+<rect x="43" y="9" width="174" height="30" rx="15" fill="url(#pink)" stroke="#b87598" stroke-width="3"/>
+<rect x="32" y="35" width="196" height="145" rx="25" fill="url(#glass)" stroke="#bf8aa9" stroke-width="4"/>
+<g id="balls"></g>
+<path d="M48 55 L48 100" stroke="white" stroke-width="7" stroke-linecap="round" opacity=".8"/>
+<rect x="26" y="170" width="208" height="108" rx="23" fill="url(#pink)" stroke="#b87598" stroke-width="3"/>
+<circle cx="130" cy="202" r="23" fill="#fff0c5" stroke="#c49b62" stroke-width="3"/>
+<text x="130" y="211" text-anchor="middle" fill="#bd8a61" font-size="26">✿</text>
+<rect x="94" y="237" width="72" height="25" rx="9" fill="#88536f" stroke="#c180a2" stroke-width="4"/>
+<text x="52" y="210" font-size="19" fill="#fff3f7">♡</text><text x="188" y="210" font-size="19" fill="#fff3f7">♡</text>
+</svg>
+<div style="background:#fffafc;border:1px solid #e9bed6;border-radius:18px;padding:14px;min-height:115px">
+<div id="flower" style="font-size:35px">🎀</div>
+<strong id="type" style="font-size:14px">Una sorpresa te espera</strong>
+<p id="msg" style="font-family:Georgia;font-size:16px;margin:8px 0">¿Lista para descubrirla?</p>
+</div>
+<button id="get" style="border:0;background:#a05b88;color:white;border-radius:30px;padding:13px 24px;margin:16px 0 8px;font-size:14px;cursor:pointer">Sacar una cápsula ✨</button>
+<div id="counter" style="font-size:11px">0 cápsulas descubiertas</div>
+<p style="font-size:11px;opacity:.8">Sin monedas. Sin límites. Hecha para regalarte momentos bonitos.</p>
+</div>
+<script>
+const balls=document.getElementById('balls');const colors=['#eea4c7','#bba3e8','#f4ce8e','#add9cb'];for(let i=0;i<12;i++){let x=59+i%4*46+(Math.floor(i/4)%2)*5,y=146-Math.floor(i/4)*39;balls.insertAdjacentHTML('beforeend',`<g transform="translate(${x} ${y}) rotate(${i*37})"><circle r="24" fill="#fff7fb" stroke="#b28ba5"/><path d="M-24 0 A24 24 0 0 0 24 0Z" fill="${colors[i%4]}"/><path d="M-24 0H24" stroke="#b28ba5"/><ellipse cx="-9" cy="-11" rx="5" ry="8" fill="white" opacity=".9"/></g>`)}
+const messages=[['🌷','Una flor para ti','Una flor que nunca se marchita, para una chica que merece cosas bonitas.'],['✨','Un pequeño cumplido','Tienes una manera muy bonita de hacer especial un día cualquiera.'],['🍪','Una dosis de dulzura','Hasta las galletas se pondrían celosas de tu sonrisa.'],['🌙','Para un día difícil','No tienes que resolverlo todo hoy. También mereces descansar.'],['🦋','Un deseo para ti','Ojalá la vida te sorprenda con cosas tan lindas como tú.'],['💌','Un secreto pequeñito','Me alegra mucho haber coincidido contigo.'],['🌻','Una flor de emergencia','Por si hoy nadie te regaló flores, aquí tienes una.'],['⭐','Una estrella para ti','Si algún día olvidas lo especial que eres, vuelve aquí.']];let bag=[],n=0;document.getElementById('get').onclick=()=>{let b=document.getElementById('get');b.disabled=true;document.getElementById('machine').animate([{transform:'rotate(0)'},{transform:'rotate(-5deg)'},{transform:'rotate(5deg)'},{transform:'rotate(0)'}],450);setTimeout(()=>{if(!bag.length)bag=messages.slice();let [f,t,m]=bag.splice(Math.floor(Math.random()*bag.length),1)[0];let el=document.getElementById('flower');el.textContent=f;el.animate([{transform:'scale(0) rotate(-45deg)'},{transform:'scale(1.3)'},{transform:'scale(1)'}],650);document.getElementById('type').textContent=t;document.getElementById('msg').textContent=m;document.getElementById('counter').textContent=++n+' cápsulas descubiertas';b.disabled=false},450)};
+</script>
